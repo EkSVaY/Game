@@ -146,6 +146,8 @@ def i_part_1(money_empire, fleet_empire, conspiracies_empire, approval_empire):
           "Империя\n"
           "=========================================================================================================\n")
 
+    print(gfaphic1.EMPIRE)
+
     print(f"Империя: Деньги {money_empire}, флот {fleet_empire}, заговоры {conspiracies_empire},"
           f" доверие великих домов {approval_empire}\n")
 
@@ -203,7 +205,7 @@ def f_part_1(people, worms, water, belief):
     print("Сегодня вы получили карту предполагаемых мест добычи специй. Вы приняли решение разработать план нападения\n"
           "на технику дома Атрейдесов, используя только ваших людей (На каждую операцию - 100 человек)\n")
 
-    print("Карта-Графика\n")
+    print(gfaphic1.MAP)
 
     dead_freeman = 0
 

@@ -1,5 +1,6 @@
 import story
 import random
+import events
 
 rep_atreides = 0
 rep_harcoon = 0
@@ -61,6 +62,14 @@ if story.story_line():
         tech_atreides -= 3
 
     input("\nPress Enter\n")
+
+    for i_events in rand_events:
+        events.atreides(i_events)
+        events.harcoon(i_events)
+        events.empire(i_events)
+        events.freeman(i_events)
+
+
 
 
 
