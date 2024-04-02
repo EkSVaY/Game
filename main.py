@@ -64,13 +64,17 @@ if story.story_line():
 
     input("\nPress Enter\n")
 
-    
+    story.part_1_final(amount_spice)
+    input("\nЧтобы начать год - Press Enter\n")
+
     '''
     RANDOM EVENTS
     '''
     for i_events in rand_events:
 
-        input("\nPress Enter\n")
+        kvartal += 1
+
+
         atr_kvest = events.atreides(i_events)
         input("\nPress Enter\n")
         har_kvest = events.harcoon(i_events)
@@ -80,29 +84,116 @@ if story.story_line():
         free_kvest = events.freeman(i_events)
 
         if i_events == 1:
+
             if atr_kvest:
                 army_atreides -= 9
                 tech_atreides += 1
             else:
                 army_atreides -= 1010
                 rep_harcoon += 100
+
+            if emp_kvest:
+                army_freeman -= 5
+                if conspiracies_empire > 0:
+                    conspiracies_empire -= 1
+            else:
+                conspiracies_empire += 1
+
+            if free_kvest:
+                water_freeman /= 2
+                army_freeman /= 4
+                belief_freeman += 100
+
+            if har_kvest == 1:
+                spice_harcoon += 5
+            elif har_kvest == 2:
+                army_harcoon = int(army_harcoon * 0.75)
+
         if i_events == 2:
+
             if atr_kvest:
                 spice_atreides += 5
                 rep_atreides += 100
             else:
                 water_freeman += 100
                 rep_atreides -= 10
+
+            if emp_kvest:
+                money_empire -= 500000
+                fleet_empire -= 6
+                approval_empire -= 3
+
+            if free_kvest:
+                water_freeman -= 1500
+            else:
+                army_freeman /= 2
+
+            if har_kvest == 1:
+                tech_harcoon = int(tech_harcoon * 1.25)
+            elif har_kvest == 2:
+                tech_harcoon -= 20
+            elif har_kvest == 3:
+                rep_harcoon -= 5
+            elif har_kvest == 4:
+                army_harcoon -= 2500
+
         if i_events == 3:
-            if atr_kvest == False:
+            if not atr_kvest:
                 army_atreides -= 1000
                 spice_atreides -= 2
             else:
                 rep_atreides += 10
 
+            if emp_kvest == 1:
+                fleet_empire -= 20
+            elif emp_kvest == 2:
+                fleet_empire -= 10
+            elif emp_kvest == 3:
+                approval_empire -= 1
+                fleet_empire -= 20
+
+            if free_kvest == 2:
+                worms_freeman -= 2
+            elif free_kvest == 3:
+                worms_freeman -= 1
+            elif free_kvest == 4:
+                army_harcoon /= 2
+                worms_freeman -= 1
+            elif free_kvest == 5:
+                army_harcoon -= 10000
+                army_atreides -= 10000
+                worms_freeman -= 2
+
+            if har_kvest:
+                rep_harcoon -= 5
+
+        if i_events == 4:
+
+            if atr_kvest:
+                rep_atreides -= 10
+
+            if emp_kvest == 2:
+                approval_empire -= 1
+            elif emp_kvest == 3:
+                approval_empire += 1
+
+            if free_kvest == 1:
+                army_freeman *= 2
+            elif free_kvest == 2:
+                worms_freeman *= 2
+            elif free_kvest == 3:
+                belief_freeman *= 2
+            elif free_kvest == 4:
+                worms_freeman *= 2
+
+            if har_kvest:
+                rep_harcoon += 5
+            else:
+                spice_harcoon -= 2
+                rep_harcoon -= 5
+
         spice_atreides += 5
         spice_harcoon += 5
-        kvartal += 1
         print(f"Итоги за {kvartal} квартал года")
         print(f"\nДом Атридесов: Репутация {rep_atreides}, Армия {army_atreides},"
               f" Техника {tech_atreides}, Специи {spice_atreides}\n")
@@ -113,10 +204,5 @@ if story.story_line():
         print(f"Фримены: Люди {army_freeman}, Шаи-Хулуды {worms_freeman}, Вода {water_freeman},"
               f" Вера {belief_freeman}\n")
         input("\nPress Enter\n")
-
-
-
-
-
 else:
     print("Игра окончена!")
