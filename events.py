@@ -1,3 +1,6 @@
+import gfaphic1
+import random
+
 def empire(events):
 
 
