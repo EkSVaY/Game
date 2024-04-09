@@ -2,6 +2,7 @@ import story
 import random
 import events
 
+
 rep_atreides = 0
 rep_harcoon = 0
 army_atreides = 100_000
@@ -73,7 +74,6 @@ if story.story_line():
     for i_events in rand_events:
 
         kvartal += 1
-
 
         atr_kvest = events.atreides(i_events)
         input("\nPress Enter\n")
